@@ -1,15 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const App: React.FC = () => {
-
-  useEffect(() =>{
-    (async () =>{
-      const req = await fetch('https://api.github.com/users/gustavomont');
-      const userInfo = await req.json()
-      console.log(userInfo);
-    })()
-  },[])
-
 
   return (
     <div>
