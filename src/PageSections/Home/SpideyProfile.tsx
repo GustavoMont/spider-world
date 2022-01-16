@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Loader from "../../Components/Loader";
 import generateAuth from "../../utils/handleEndPoints";
 const baseUrl = "https://gateway.marvel.com/v1/public";
 interface SpideyInfo {
@@ -21,11 +22,7 @@ const SpideyProfile: React.FC = () => {
   }, []);
 
   if (!spidey) {
-    return (
-      <h1 data-aos="fade-in" className="m-auto text-white text-[3rem]">
-        Carregando
-      </h1>
-    );
+    return <Loader />;
   }
 
   return (
