@@ -32,6 +32,10 @@ body {
     background-size: cover;
 }
 
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 .loader {
     -webkit-animation: spin 2s linear infinite;
     /* Safari */
