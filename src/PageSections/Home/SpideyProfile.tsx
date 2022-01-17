@@ -26,29 +26,34 @@ const SpideyProfile: React.FC = () => {
   }
 
   return (
-    <div
-      data-aos="fade-up"
-      className="bg-black-80 w-[95vw] m-auto text-white p-4"
+    <section
+      className="h-screen relative flex items-center"
+      id="spidey-profile"
     >
       <div
-        id="profile-header"
-        className="flex text-[1.2rem] text-center
-      items-center justify-between"
+        data-aos="fade-up"
+        className="bg-black-80 w-[95vw] m-auto text-white p-4"
       >
         <div
-          id="avatar"
-          className="w-[5rem] h-[5rem] rounded-full bg-white"
-          style={{
-            backgroundImage: `url(${spidey?.thumbnail.path}/portrait_xlarge.${spidey?.thumbnail.extension})`,
-          }}
-        ></div>
-        <div id="nome">
-          <h4>{spidey?.name}</h4>
+          id="profile-header"
+          className="flex text-[1.2rem] text-center
+      items-center justify-between"
+        >
+          <div
+            id="avatar"
+            className="w-[5rem] h-[5rem] rounded-full bg-white"
+            style={{
+              backgroundImage: `url(${spidey?.thumbnail.path}/portrait_xlarge.${spidey?.thumbnail.extension})`,
+            }}
+          ></div>
+          <div id="nome">
+            <h4>{spidey?.name}</h4>
+          </div>
         </div>
+        <hr className="my-5" />
+        <div id="description">{spidey?.description}</div>
       </div>
-      <hr className="my-5" />
-      <div id="description">{spidey?.description}</div>
-    </div>
+    </section>
   );
 };
 
