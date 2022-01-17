@@ -1,6 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import Menu from "./Components/Menu";
 import { SpideyProvider } from "./Context/SpideyContentCtx";
+import ComicsPage from "./pages/Comics";
+import AllComics from "./pages/Comics/AllCommics";
+import OneComic from "./pages/Comics/OneComic";
 import Home from "./pages/Home";
 
 const AppRoutes: React.FC = () => (
@@ -8,6 +11,10 @@ const AppRoutes: React.FC = () => (
     <Menu />
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/comics" element={<ComicsPage />}>
+        <Route index element={<AllComics />} />
+        <Route path=":id" element={<OneComic />} />
+      </Route>
     </Routes>
   </SpideyProvider>
 );
