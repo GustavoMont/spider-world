@@ -15,6 +15,7 @@ module.exports = {
         70: 'rgba(0, 0, 0, 0.7)',
         50: 'rgba(0, 0, 0, 0.5)'
       },
+      gray: 'rgb(160, 160, 160)',
       transparent: 'transparent'
     },
     extend: {
