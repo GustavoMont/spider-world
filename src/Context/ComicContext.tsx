@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { SpideyContent } from "../Types/SpideyComics";
+import { SpideyContent } from "../Types/SpideyContent";
 
 import generateAuth from "../utils/handleEndPoints";
 
