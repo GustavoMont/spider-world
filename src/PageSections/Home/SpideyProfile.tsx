@@ -32,7 +32,7 @@ const SpideyProfile: React.FC = () => {
     >
       <div
         data-aos="fade-up"
-        className="bg-black-80 w-[95vw] m-auto text-white p-4"
+        className="bg-black-80 w-[95vw] m-auto rounded-xl text-white p-4"
       >
         <div
           id="profile-header"

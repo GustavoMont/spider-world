@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import Loader from "../../Components/Loader";
 import { SpideyContext } from "../../Context/SpideyContentCtx";
 
-const Comics: React.FC = () => {
+interface ComicsComponent {
+  height: string | null;
+}
+
+const Comics = ({ height }: ComicsComponent) => {
   const { comics } = useContext(SpideyContext);
   if (!comics || comics.length === 0) {
     return <Loader />;
@@ -11,7 +15,9 @@ const Comics: React.FC = () => {
   return (
     <section className="relative">
       <h2 className="text-white text-[2rem] px-3 text-center">Comics</h2>
-      <div className="container border-2 w-[90vw] mx-auto border-white rounded-bl-none rounded-br-none border-b-transparent rounded-lg bg-black-70 overflow-hidden h-[370vh]">
+      <div
+        className={`container border-2 w-[90vw] mx-auto border-white rounded-bl-none rounded-br-none border-b-transparent rounded-lg bg-black-70 overflow-hidden ${height}`}
+      >
         <div
           className="flex flex-col w-[90%] mx-auto justify-around items-center"
           id="app"
@@ -20,7 +26,7 @@ const Comics: React.FC = () => {
             <div
               className="comic rounded-md w-[90%] h-[60vh] border-4 border-dark-red dark:border-white max-w-[800px] my-1"
               key={item?.id}
-              data-aos={`fade-${index % 2 === 0 ? "left" : "right"}`}
+              data-aos={`flip-${index % 2 === 0 ? "left" : "right"}`}
             >
               <div
                 className="thumbnail w-full h-[100%] bg-container"
