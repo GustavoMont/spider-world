@@ -4,10 +4,13 @@ import AppRoutes from "./routes";
 const App: React.FC = () => {
   return (
     <>
-      <div className="bg-dark-red -z-50 relative min-h-screen">
-        <i className="fas fa-spider -z-50 darkmode fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[250px] dark:text-white"></i>
-        <AppRoutes />
+      <div
+        className="bg-dark-red dark:bg-black-100 fixed top-0 ease-in duration-300 left-0 w-screen h-screen -z-50 flex items-center justify-center"
+        onClick={(e) => e.preventDefault}
+      >
+        <i className="fas fa-spider text-[10rem] ease-in duration-500 dark:text-white"></i>
       </div>
+      <AppRoutes />
     </>
   );
 };
