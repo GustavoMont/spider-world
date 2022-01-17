@@ -12,7 +12,7 @@ interface SpideyContextType {
 
 export const SpideyContext = createContext<Partial<SpideyContextType>>({});
 
-export const ComicsProvider: React.FC = ({ children }) => {
+export const SpideyProvider: React.FC = ({ children }) => {
   const [comics, setComics] = useState<SpideyContent[]>([]);
   const [series, setSeries] = useState<SpideyContent[]>([]);
   useEffect(() => {
