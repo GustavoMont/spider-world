@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { SpideyContent } from "../Types/SpideyContent";
 
 interface DropdownComp {
-  infos: SpideyContent[];
+  infos?: SpideyContent[];
   title: string;
 }
 
@@ -21,8 +21,8 @@ function Dropdown({ infos, title }: DropdownComp) {
             <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />{" "}
           </svg>
         </button>
-        <ul className="dropdown-menu absolute hidden text-red pt-1">
-          {infos.map((info) => (
+        <ul className="dropdown-menu absolute z-50 hidden text-red pt-1">
+          {infos?.map((info) => (
             <li className="" key={info.id}>
               <Link
                 to={`${title}/${info.id}`}

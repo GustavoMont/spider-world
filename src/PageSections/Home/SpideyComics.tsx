@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../Components/Loader";
-import { ComicsContext } from "../../Context/ComicContext";
+import { SpideyContext } from "../../Context/SpideyContentCtx";
 
 const Comics: React.FC = () => {
-  const comics = useContext(ComicsContext);
+  const { comics } = useContext(SpideyContext);
   if (!comics || comics.length === 0) {
     return <Loader />;
   }
@@ -25,7 +25,7 @@ const Comics: React.FC = () => {
               <div
                 className="thumbnail w-full h-[100%] bg-container"
                 style={{
-                  backgroundImage: `url(${item?.thumbnail.path}/detail.${item?.thumbnail.extension})`,
+                  backgroundImage: `url(${item.thumbnail?.path}/detail.${item.thumbnail?.extension})`,
                 }}
               ></div>
             </div>

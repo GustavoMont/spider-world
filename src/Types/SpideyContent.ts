@@ -1,20 +1,20 @@
 export interface SpideyContent {
   id: number;
   title: string;
-  textObjects: [
+  textObjects?: [
     {
       type: string;
       language: string;
       text: string;
     }
   ];
-  prices: [
+  prices?: [
     {
       type: string;
       price: number;
     }
   ];
-  thumbnail: {
+  thumbnail?: {
     path: string;
     extension: string;
   };
