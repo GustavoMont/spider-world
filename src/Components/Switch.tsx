@@ -14,6 +14,12 @@ const Switch = () => {
         if (html.contains("dark")) {
           const mp3: HTMLAudioElement = new Audio(alarm);
           mp3.play();
+          let timer = setInterval(() => {
+            if (mp3.volume - 0.08 >= 0) {
+              mp3.volume -= 0.05;
+            }
+          }, 175);
+          setTimeout(() => clearInterval(timer), 3500);
         }
         setToggle(!toggle);
       }}
