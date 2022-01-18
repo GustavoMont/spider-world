@@ -2,7 +2,7 @@ import React, { useState } from "react";
 const alarm = require("../assets/black-suit.mp3");
 const Switch = () => {
   const [toggle, setToggle] = useState<Boolean>(true);
-
+  const [isPlaying, setIsPlaying] = useState<Boolean>(false);
   const toggleClass = " transform translate-x-8";
 
   return (
@@ -11,15 +11,19 @@ const Switch = () => {
       onClick={async () => {
         const html = window.document.documentElement.classList;
         html.toggle("dark");
-        if (html.contains("dark")) {
+        if (html.contains("dark") && !isPlaying) {
           const mp3: HTMLAudioElement = new Audio(alarm);
           mp3.play();
+          setIsPlaying(true);
           let timer = setInterval(() => {
             if (mp3.volume - 0.08 >= 0) {
               mp3.volume -= 0.05;
             }
           }, 175);
-          setTimeout(() => clearInterval(timer), 3500);
+          setTimeout(() => {
+            setIsPlaying(false);
+            clearInterval(timer);
+          }, 3500);
         }
         setToggle(!toggle);
       }}
