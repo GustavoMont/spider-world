@@ -16,7 +16,7 @@ function SpideyMoral() {
         <h2 className="text-[2rem]" id="powers">
           With Great Powers
         </h2>
-        <p className="my-5 mx-auto w-1/5 py-2 bg-red text-white italic dark:bg-gray ease-in duration-300">
+        <p className="my-5 mx-auto inline-block p-3 bg-red uppercase font-[700]  text-white italic dark:bg-gray ease-in duration-300">
           comes
         </p>
         <h2 className="text-[2rem]" id="resp">
