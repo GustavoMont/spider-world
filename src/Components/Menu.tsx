@@ -1,17 +1,46 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SpideyContext } from "../Context/SpideyContentCtx";
 import Dropdown from "./Dropdown";
 import Switch from "./Switch";
 
 const Menu: React.FC = () => {
   const [open, setOpen] = useState<Boolean>(false);
+  const [bg, setBg] = useState<Boolean>(false);
+  const navegate = useNavigate();
   const optionClasses = `dark:bg-black-100 w-screen h-[85vh] bg-red`;
   const { comics } = useContext(SpideyContext);
+  window.onscroll = () => {
+    setBg(true);
+    const firtsBarrier = document.querySelectorAll("[data-barrier]")[0];
+    const barrierPos = firtsBarrier.getBoundingClientRect().top;
+
+    if (barrierPos < 60) {
+      setBg(true);
+    } else {
+      setBg(false);
+    }
+  };
+
   document.body.style.overflow = open ? "hidden" : "auto";
   return (
-    <nav className="px-2 md:px-10 ease-in duration-300 bg-dark-red text-white h-[15vh] flex justify-between items-center z-50 dark:bg-black-100 fixed w-screen lg  md:h-[10vh] lg:px-10">
-      <h1 className="text-[1.5rem] text-bold">Spider-World</h1>
+    <nav
+      className={`px-2 md:px-10 ease-in duration-300 ${
+        // eslint-disable-next-line no-useless-concat
+        bg && "bg-blue " + " dark:bg-black-100"
+      }  text-white h-[15vh] flex justify-between ease-in duration-300 items-center z-50 fixed w-screen lg  md:h-[10vh] lg:px-10`}
+      id="menu"
+    >
+      <h1 className="text-[1.5rem] text-white text-bold">
+        {window.location.pathname === "/" ? (
+          `Spider-World`
+        ) : (
+          <i
+            className="fas fa-arrow-left text-white cursor-pointer hover:scale-125 hover:text-white-80 ease-in duration-100"
+            onClick={() => navegate(-1)}
+          ></i>
+        )}
+      </h1>
       <div
         className={`ham-container lg:hidden ${
           open ? "active" : ""

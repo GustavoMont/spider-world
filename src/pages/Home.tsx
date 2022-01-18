@@ -18,7 +18,7 @@ const Home: React.FC = () => {
     <>
       <SpideyMoral />
       <SpideyProfile />
-      <Comics height={"h-[370vh]"} />
+      <Comics height={"max-h-[370vh]"} />
       <Comunity />
     </>
   );

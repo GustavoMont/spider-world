@@ -24,7 +24,7 @@ function Dropdown({ infos, title, closeMenu }: DropdownComp) {
         </button>
         <ul className="dropdown-menu absolute z-50 hidden text-red pt-1">
           {infos?.map((info, index) => {
-            if (index >= 8) {
+            if (index >= 7) {
               return null;
             }
             return (
@@ -32,7 +32,7 @@ function Dropdown({ infos, title, closeMenu }: DropdownComp) {
                 <Link
                   onClick={() => closeMenu(false)}
                   to={`${title}/${info.id}`}
-                  className="bg-white dark:bg-gray dark:text-white hover:bg-red hover:text-white py-2 px-4 block dark:hover:bg-white dark:hover:text-gray  whitespace-no-wrap lg:w-[18rem] lg:py-3"
+                  className="bg-white dark:bg-gray dark:text-white hover:bg-red hover:text-white py-2 px-4 block dark:hover:bg-white dark:hover:text-gray  whitespace-no-wrap lg:w-[19rem] lg:py-3"
                 >
                   {info.title}
                 </Link>
@@ -43,7 +43,7 @@ function Dropdown({ infos, title, closeMenu }: DropdownComp) {
             <Link
               onClick={() => closeMenu(false)}
               to={`${title}`}
-              className="rounded-t bg-white dark:bg-gray dark:text-white hover:bg-gray py-2 px-4 block whitespace-no-wrap"
+              className="rounded-t bg-white dark:bg-gray dark:text-white hover:bg-red hover:text-white py-2 px-4 block whitespace-no-wrap"
             >
               Ver todos
             </Link>
