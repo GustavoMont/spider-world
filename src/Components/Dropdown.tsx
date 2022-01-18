@@ -12,7 +12,7 @@ function Dropdown({ infos, title, closeMenu }: DropdownComp) {
   return (
     <div className="p-10">
       <div className="dropdown inline-block relative">
-        <button className="bg-white ease-in duration-300 dark:bg-gray text-red dark:text-white font-semibold py-2 px-4 rounded inline-flex items-center">
+        <button className="bg-white dark:bg-gray text-red dark:text-white font-semibold py-2 px-4 rounded inline-flex items-center">
           <span className="mr-1">{title}</span>
           <svg
             className="fill-current h-4 w-4"
@@ -23,17 +23,31 @@ function Dropdown({ infos, title, closeMenu }: DropdownComp) {
           </svg>
         </button>
         <ul className="dropdown-menu absolute z-50 hidden text-red pt-1">
-          {infos?.map((info) => (
-            <li className="" key={info.id}>
-              <Link
-                onClick={() => closeMenu(false)}
-                to={`${title}/${info.id}`}
-                className="rounded-t bg-white dark:bg-gray dark:text-white hover:bg-gray py-2 px-4 block whitespace-no-wrap"
-              >
-                {info.title}
-              </Link>
-            </li>
-          ))}
+          {infos?.map((info, index) => {
+            if (index >= 8) {
+              return null;
+            }
+            return (
+              <li className="" key={info.id}>
+                <Link
+                  onClick={() => closeMenu(false)}
+                  to={`${title}/${info.id}`}
+                  className="bg-white dark:bg-gray dark:text-white hover:bg-red hover:text-white py-2 px-4 block dark:hover:bg-white dark:hover:text-gray  whitespace-no-wrap lg:w-[18rem] lg:py-3"
+                >
+                  {info.title}
+                </Link>
+              </li>
+            );
+          })}
+          <li className="">
+            <Link
+              onClick={() => closeMenu(false)}
+              to={`${title}`}
+              className="rounded-t bg-white dark:bg-gray dark:text-white hover:bg-gray py-2 px-4 block whitespace-no-wrap"
+            >
+              Ver todos
+            </Link>
+          </li>
         </ul>
       </div>
     </div>
