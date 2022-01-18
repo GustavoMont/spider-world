@@ -3,13 +3,11 @@ import React from "react";
 function SpideyMoral() {
   return (
     <section
-      className="h-screen flex items-center justify-center"
+      className="h-screen flex items-center justify-center md:bg-no-repeat md:bg-cover md:bg-top bg-contain"
       id="power-resp"
       style={{
         backgroundImage:
-          "url(https://cdn.pixabay.com/photo/2017/05/16/22/44/spider-man-2319337_960_720.png)",
-        backgroundSize: "auto",
-        backgroundPosition: "center",
+          "url(https://cdn.pixabay.com/photo/2017/05/13/15/25/spider-man-2309824_960_720.jpg)",
       }}
     >
       <div id="sentence" className="text-white text-center">
