@@ -8,7 +8,6 @@ const ComicsPage = () => {
   }, []);
   return (
     <div className="pt-[15vh]">
-      <h1>Comics Page</h1>
       <Outlet />
     </div>
   );
