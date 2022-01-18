@@ -5,12 +5,20 @@ function SpideyMoral() {
     <section
       className="h-screen flex items-center justify-center"
       id="power-resp"
+      style={{
+        backgroundImage:
+          "url(https://cdn.pixabay.com/photo/2017/05/16/22/44/spider-man-2319337_960_720.png)",
+        backgroundSize: "auto",
+        backgroundPosition: "center",
+      }}
     >
       <div id="sentence" className="text-white text-center">
         <h2 className="text-[2rem]" id="powers">
           With Great Powers
         </h2>
-        <p className="my-5  dark:text-blue">comes</p>
+        <p className="my-5 mx-auto w-1/5 py-2 bg-red text-white italic dark:bg-gray ease-in duration-300">
+          comes
+        </p>
         <h2 className="text-[2rem]" id="resp">
           Great Responsibility
         </h2>

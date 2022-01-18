@@ -32,12 +32,13 @@ const SpideyProfile: React.FC = () => {
     >
       <div
         data-aos="fade-up"
-        className="bg-black-80 w-[95vw] m-auto rounded-xl text-white p-4"
+        className="bg-black-80 w-[95vw] max-w-[400px] m-auto rounded-xl text-white p-4"
+        data-barrier
       >
         <div
           id="profile-header"
           className="flex text-[1.2rem] text-center
-      items-center justify-between"
+      items-center justify-between lg:px-[4rem]"
         >
           <div
             id="avatar"

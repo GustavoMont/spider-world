@@ -9,7 +9,7 @@ const Comunity = () => {
     >
       <div
         data-aos="zoom-in-up"
-        className="bg-white-80 dark:bg-black-70 rounded-lg w-[95vw] m-auto p-4"
+        className="bg-white-80 dark:bg-black-70 rounded-lg w-[95vw] max-w-[600px] md:p-9 m-auto p-4"
       >
         <h2 className="text-[2rem] text-dark-red dark:text-white text-center">
           Join in Our Comunity
@@ -25,7 +25,7 @@ const Comunity = () => {
         </div>
         <Link
           to={"/join"}
-          className="bg-blue dark:bg-gray w-full block my-5 p-3 text-center font-extrabold text-white rounded-full"
+          className="bg-blue max-w-[200px] mx-auto ease-in duration-300 dark:bg-gray w-full block my-5 p-3 text-center font-extrabold hover:scale-125 text-white rounded-full"
         >
           Join to Us
         </Link>
