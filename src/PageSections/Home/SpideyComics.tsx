@@ -8,7 +8,7 @@ interface ComicsComponent {
 }
 
 const Comics = ({ height }: ComicsComponent) => {
-  const { comics } = useContext(SpideyContext);
+  const { comics, dispatch } = useContext(SpideyContext);
   const navegate = useNavigate();
   if (!comics || comics.length === 0) {
     return <Loader />;
@@ -29,12 +29,15 @@ const Comics = ({ height }: ComicsComponent) => {
             <div
               data-aos={`flip-${index % 2 === 0 ? "left" : "right"}`}
               className="my-8 mx-auto w-[90%]"
+              key={item?.id}
             >
               <h2 className="text-white text-center mb-2">{item.title}</h2>
               <div
                 className={`comic rounded-md w-full h-[60vh] border-4 border-dark-red dark:border-white max-w-[800px]`}
-                key={item?.id}
-                onClick={() => navegate(`/comics/${item.id}`)}
+                onClick={() => {
+                  dispatch({ type: "ALL_INFO", info: item });
+                  navegate(`/comics/${item.id}`);
+                }}
               >
                 <div
                   className="thumbnail w-full h-[100%] bg-container"

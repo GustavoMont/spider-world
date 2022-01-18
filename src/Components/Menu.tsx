@@ -6,7 +6,7 @@ import Switch from "./Switch";
 const Menu: React.FC = () => {
   const [open, setOpen] = useState<Boolean>(false);
   const optionClasses = `dark:bg-black-100 w-screen h-[85vh] bg-red `;
-  const { comics, series } = useContext(SpideyContext);
+  const { comics } = useContext(SpideyContext);
   document.body.style.overflow = open ? "hidden" : "auto";
   return (
     <nav className="px-2 bg-dark-red text-white h-[15vh] flex justify-between items-center z-50 dark:bg-black-100 fixed w-screen">
@@ -36,10 +36,7 @@ const Menu: React.FC = () => {
             <Switch />
           </li>
           <li>
-            <Dropdown infos={comics} title="Comics" />
-          </li>
-          <li>
-            <Dropdown infos={series} title="Series" />
+            <Dropdown infos={comics} title="Comics" closeMenu={setOpen} />
           </li>
         </ul>
       </div>

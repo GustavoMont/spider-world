@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
+import { SpideyContext } from "../../Context/SpideyContentCtx";
 
 const OneComic = () => {
+  const { state } = useContext(SpideyContext);
   const { id } = useParams();
+
   return (
     <div>
-      <h1>{id}</h1>
+      {id}: {state.title}
     </div>
   );
 };

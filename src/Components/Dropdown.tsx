@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { SpideyContent } from "../Types/SpideyContent";
 
 interface DropdownComp {
-  infos?: SpideyContent[];
+  infos: SpideyContent[] | null;
   title: string;
+  closeMenu: React.Dispatch<React.SetStateAction<Boolean>>;
 }
 
-function Dropdown({ infos, title }: DropdownComp) {
+function Dropdown({ infos, title, closeMenu }: DropdownComp) {
   return (
     <div className="p-10">
       <div className="dropdown inline-block relative">
@@ -25,6 +26,7 @@ function Dropdown({ infos, title }: DropdownComp) {
           {infos?.map((info) => (
             <li className="" key={info.id}>
               <Link
+                onClick={() => closeMenu(false)}
                 to={`${title}/${info.id}`}
                 className="rounded-t bg-white dark:bg-gray dark:text-white hover:bg-gray py-2 px-4 block whitespace-no-wrap"
               >
