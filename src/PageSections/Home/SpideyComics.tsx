@@ -26,7 +26,7 @@ const Comics = ({ height }: ComicsComponent) => {
         Comics
       </h2>
       <div
-        className={`container border-2 w-[90vw] mx-auto border-white ${
+        className={`container border-2 w-[90vw] mx-auto ${
           height && "rounded-bl-none rounded-br-none border-b-transparent"
         } rounded-lg bg-black-70 overflow-hidden ${height}`}
       >
