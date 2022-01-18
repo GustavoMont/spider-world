@@ -32,14 +32,13 @@ const Menu: React.FC = () => {
       id="menu"
     >
       <h1 className="text-[1.5rem] text-white text-bold">
-        {window.location.pathname === "/" ? (
-          `Spider-World`
-        ) : (
+        {window.location.pathname !== "/" && (
           <i
-            className="fas fa-arrow-left text-white cursor-pointer hover:scale-125 hover:text-white-80 ease-in duration-100"
+            className="fas fa-arrow-left text-white cursor-pointer mr-3 hover:scale-125 hover:text-white-80 ease-in duration-100"
             onClick={() => navegate(-1)}
           ></i>
         )}
+        <Link to={"/"}>Spider-World</Link>
       </h1>
       <div
         className={`ham-container lg:hidden ${
