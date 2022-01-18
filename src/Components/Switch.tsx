@@ -7,7 +7,7 @@ const Switch = () => {
 
   return (
     <div
-      className="md:w-14 md:h-7 w-14 h-6 flex items-center bg-white rounded-full cursor-pointer"
+      className="md:w-14 md:h-7 w-14 h-6 flex items-center hover:opacity-90 ease-in duration-100 bg-white rounded-full cursor-pointer"
       onClick={async () => {
         const html = window.document.documentElement.classList;
         html.toggle("dark");
