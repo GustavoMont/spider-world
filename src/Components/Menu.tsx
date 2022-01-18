@@ -27,8 +27,8 @@ const Menu: React.FC = () => {
     <nav
       className={`px-2 md:px-10 ease-in duration-300 ${
         // eslint-disable-next-line no-useless-concat
-        bg && "bg-blue " + " dark:bg-black-100"
-      }  text-white h-[15vh] flex justify-between ease-in duration-300 items-center z-50 fixed w-screen lg  md:h-[10vh] lg:px-10`}
+        (bg || open) && "bg-blue " + " dark:bg-black-100"
+      }  text-white h-[15vh] flex justify-between ease-in duration-300 items-center z-50 fixed w-screen md:h-[10vh] lg:px-10`}
       id="menu"
     >
       <h1 className="text-[1.5rem] text-white text-bold">
@@ -55,8 +55,9 @@ const Menu: React.FC = () => {
         <div className="bar rounded absolute top-[90%]" id="end"></div>
       </div>
       <div
-        className={`menu-options overflow-y-auto absolute lg:overflow-y-visible left-0 ease-in flex dark:bg-black-100 w-screen h-[85vh] md:h-[90vh] bg-red lg:w-3/6 items-center duration-500 ${optionClasses} ${
-          open ? "top-[15vh] md:top-[10vh]" : "top-[100vh]"
+        className={`menu-options overflow-y-auto absolute lg:overflow-y-visible left-0 ease-in flex dark:bg-black-100 w-screen 
+        h-[85vh] md:h-[90vh] bg-red lg:w-3/6 items-center duration-500 ${optionClasses} ${
+          open ? "top-[15vh]" : "top-[100vh]"
         } lg:static lg:h-[100%] lg:bg-transparent lg:dark:bg-transparent`}
       >
         <ul
