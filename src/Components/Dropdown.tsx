@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { SpideyContext } from "../Context/SpideyContentCtx";
 import { SpideyContent } from "../Types/SpideyContent";
 
 interface DropdownComp {
@@ -9,6 +10,7 @@ interface DropdownComp {
 }
 
 function Dropdown({ infos, title, closeMenu }: DropdownComp) {
+  const { dispatch } = useContext(SpideyContext);
   return (
     <div className="p-10">
       <div className="dropdown inline-block relative">
@@ -30,7 +32,10 @@ function Dropdown({ infos, title, closeMenu }: DropdownComp) {
             return (
               <li className="" key={info.id}>
                 <Link
-                  onClick={() => closeMenu(false)}
+                  onClick={() => {
+                    dispatch({ type: "ALL_INFO", info });
+                    closeMenu(false);
+                  }}
                   to={`${title}/${info.id}`}
                   className="bg-white dark:bg-gray dark:text-white hover:bg-red hover:text-white py-2 px-4 block dark:hover:bg-white dark:hover:text-gray  whitespace-no-wrap lg:w-[19rem] lg:py-3"
                 >
