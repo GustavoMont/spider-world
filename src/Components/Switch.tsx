@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 const alarm = require("../assets/black-suit.mp3");
-const Switch: React.FC = () => {
+const Switch = () => {
   const [toggle, setToggle] = useState<Boolean>(true);
 
-  const toggleClass = " transform translate-x-5";
+  const toggleClass = " transform translate-x-8";
 
   return (
     <div
-      className="md:w-14 md:h-7 w-12 h-6 flex items-center bg-blue rounded-full p-1 cursor-pointer"
+      className="md:w-14 md:h-7 w-14 h-6 flex items-center bg-white rounded-full cursor-pointer"
       onClick={async () => {
         const html = window.document.documentElement.classList;
         html.toggle("dark");
@@ -21,10 +21,14 @@ const Switch: React.FC = () => {
       {/* Switch */}
       <div
         className={
-          "bg-white md:w-6 md:h-6 h-5 w-5 ease-in duration-300 rounded-full shadow-md transform" +
+          "bg-blue md:w-6 md:h-6 h-8 w-8 dark:bg-gray flex justify-center items-center ease-in duration-300 rounded-full shadow-md transform" +
           (toggle ? null : toggleClass)
         }
-      ></div>
+      >
+        <i
+          className={`text-white  ${!toggle ? "fas fa-moon" : "fas fa-sun"}`}
+        ></i>
+      </div>
     </div>
   );
 };

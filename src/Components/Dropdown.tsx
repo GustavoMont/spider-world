@@ -12,7 +12,7 @@ function Dropdown({ infos, title, closeMenu }: DropdownComp) {
   return (
     <div className="p-10">
       <div className="dropdown inline-block relative">
-        <button className="bg-white dark:bg-gray text-red dark:text-white font-semibold py-2 px-4 rounded inline-flex items-center">
+        <button className="bg-white ease-in duration-300 dark:bg-gray text-red dark:text-white font-semibold py-2 px-4 rounded inline-flex items-center">
           <span className="mr-1">{title}</span>
           <svg
             className="fill-current h-4 w-4"

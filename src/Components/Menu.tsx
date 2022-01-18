@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { SpideyContext } from "../Context/SpideyContentCtx";
 import Dropdown from "./Dropdown";
 import Switch from "./Switch";
@@ -9,7 +10,7 @@ const Menu: React.FC = () => {
   const { comics } = useContext(SpideyContext);
   document.body.style.overflow = open ? "hidden" : "auto";
   return (
-    <nav className="px-2 bg-dark-red text-white h-[15vh] flex justify-between items-center z-50 dark:bg-black-100 fixed w-screen">
+    <nav className="px-2 ease-in duration-300 bg-dark-red text-white h-[15vh] flex justify-between items-center z-50 dark:bg-black-100 fixed w-screen">
       <h1 className="text-[1.5rem] text-bold">Spider-World</h1>
       <div
         className={`ham-container ${
@@ -37,6 +38,14 @@ const Menu: React.FC = () => {
           </li>
           <li>
             <Dropdown infos={comics} title="Comics" closeMenu={setOpen} />
+          </li>
+          <li>
+            <Link
+              to={"/join"}
+              className="bg-white dark:bg-gray ease-in duration-300 dark:text-white text-dark-red w-40 py-3 text-center font-bold rounded-md block"
+            >
+              Join to Us
+            </Link>
           </li>
         </ul>
       </div>
