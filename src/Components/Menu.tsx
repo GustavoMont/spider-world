@@ -70,6 +70,7 @@ const Menu: React.FC = () => {
           </li>
           <li>
             <Link
+              onClick={() => setOpen(false)}
               to={"/join"}
               className="bg-white hover:bg-dark-red dark:bg-gray dark:hover:bg-white ease-in duration-300 dark:text-white text-dark-red hover:text-white dark:hover:text-gray w-40 py-3 text-center font-bold rounded-md block lg:w-28"
             >
