@@ -2,6 +2,7 @@ import { createContext } from "react";
 
 interface Auth {
   isAuth(): Boolean;
+  name: string;
 }
 
 function isAuth() {
@@ -10,6 +11,9 @@ function isAuth() {
   return login;
 }
 
-const AuthContext = createContext<Auth>({ isAuth });
+const database = localStorage.getItem("@spider-world-login") || "";
+const name: string = database && JSON.parse(database).name;
+
+const AuthContext = createContext<Auth>({ isAuth, name });
 
 export default AuthContext;
