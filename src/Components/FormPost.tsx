@@ -20,7 +20,7 @@ const FormPost = () => {
   return (
     <div>
       <form
-        className="flex flex-col text-black-100 dark:text-white"
+        className="flex flex-col text-black-100 dark:text-white pointer-events-auto"
         onSubmit={(e) => {
           e.preventDefault();
           if (!comic) {
@@ -31,6 +31,7 @@ const FormPost = () => {
             setErrorMsg("You didn't write anything");
             return;
           }
+
           const post: PostType = {
             name: anonimous ? undefined : name,
             comic,
@@ -51,6 +52,7 @@ const FormPost = () => {
           value={comic}
           onChange={({ target }) => setComic(target.value)}
           className="dark:bg-black-100"
+          aria-flowto="bottom"
         >
           <option value={""} disabled>
             Select one comic

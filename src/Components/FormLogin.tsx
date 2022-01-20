@@ -8,7 +8,7 @@ function FormLogin() {
   const navigate = useNavigate();
   return (
     <form
-      className="flex flex-col"
+      className="flex flex-col text-white "
       onSubmit={(e) => {
         e.preventDefault();
         const database = localStorage.getItem("@spider-world-users") || "";
@@ -17,7 +17,7 @@ function FormLogin() {
           users &&
           users.reduce(
             (last: boolean, user: { email: string; name: string }) =>
-              user.email === email && user,
+              user.email === email ? user : last,
             false
           );
 
@@ -39,7 +39,7 @@ function FormLogin() {
         setErrorMsg("");
         setEmail("");
         setPass("");
-        navigate("/comumnity");
+        navigate("/community");
       }}
     >
       <label htmlFor="email">E-mail: </label>
@@ -47,7 +47,7 @@ function FormLogin() {
         type="email"
         name="email"
         id="email"
-        className="p-1 rounded my-2 text-black-100"
+        className="p-1 rounded my-2 text-black-100 dark:text-white dark:bg-black-100"
         onChange={(e) => setEmail(e.target.value)}
         value={email}
       />
@@ -62,7 +62,10 @@ function FormLogin() {
       />
       <hr />
       {errorMsg && <p className="text-white text-[1.1rem]">{errorMsg}</p>}
-      <button type="submit" className="bg-blue my-2 py-2 rounded-md">
+      <button
+        type="submit"
+        className="bg-blue dark:bg-black-100 my-2 py-2 rounded-md"
+      >
         Login
       </button>
     </form>

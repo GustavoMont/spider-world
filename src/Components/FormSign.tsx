@@ -53,7 +53,7 @@ const FormSign = () => {
         type="text"
         name="name"
         id="name"
-        className="p-1 rounded my-2 text-black-100"
+        className="p-1 rounded my-2 text-black-100 dark:text-white dark:bg-black-100"
         value={name}
         onChange={({ target }) => setName(target.value)}
       />
@@ -62,7 +62,7 @@ const FormSign = () => {
         type="date"
         name="nasc"
         id="nasc"
-        className="p-1 rounded my-2 text-black-100"
+        className="p-1 rounded my-2 text-black-100 dark:text-white dark:bg-black-100"
         value={date.split("T")[0]}
         onChange={({ target }) => setDate(target.value)}
       />
@@ -71,7 +71,7 @@ const FormSign = () => {
         type="email"
         name="cad-email"
         id="cad-email"
-        className="p-1 rounded my-2 text-black-100"
+        className="p-1 rounded my-2 text-black-100 dark:text-white dark:bg-black-100"
         value={email}
         onChange={({ target }) => setEmail(target.value)}
       />
@@ -80,7 +80,7 @@ const FormSign = () => {
         type="password"
         name="cad-password"
         id="cad-password"
-        className="p-1 rounded my-2 text-black-100"
+        className="p-1 rounded my-2 text-black-100 dark:text-white dark:bg-black-100"
         value={pass}
         onChange={({ target }) => setPass(target.value)}
       />
@@ -89,7 +89,7 @@ const FormSign = () => {
         type="password"
         name="confirm"
         id="confirm"
-        className="p-1 rounded my-2 text-black-100"
+        className="p-1 rounded my-2 text-black-100 dark:text-white dark:bg-black-100"
         value={confirm}
         onChange={({ target }) => {
           setConfirm(target.value);
@@ -100,7 +100,10 @@ const FormSign = () => {
       />
       {errorMsg && <p className="text-white text-[1.1rem]">{errorMsg}</p>}
       <hr />
-      <button type="submit" className="bg-dark-red my-2 py-2 rounded-md ">
+      <button
+        type="submit"
+        className="bg-dark-red my-2 py-2 rounded-md dark:text-white dark:bg-black-100 "
+      >
         Login
       </button>
     </form>
