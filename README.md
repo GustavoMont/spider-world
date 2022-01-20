@@ -1,6 +1,6 @@
 # Spider World
 
-![Tela Princicpal](./readme-images/main-screen.jpeg)
+![Tela Princicpal](./readme-imgs/main-screen.jpeg)
 
 Uma pagína sobre o Spider Man e uma comunidade que gosta do personagem.
 
