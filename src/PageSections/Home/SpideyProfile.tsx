@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Loader from "../../Components/Loader";
-import generateAuth from "../../utils/handleEndPoints";
+import generateAuth from "../../utils/handleEndPoints"; // Função para gerar as credenciais da api
 const baseUrl = "https://gateway.marvel.com/v1/public";
 interface SpideyInfo {
   name: string;
@@ -9,7 +9,7 @@ interface SpideyInfo {
     path: string;
     extension: string;
   };
-}
+} // Informações do personagem, baseados na api
 const SpideyProfile: React.FC = () => {
   const [spidey, setSpidey] = useState<SpideyInfo>();
   useEffect(() => {
@@ -22,6 +22,7 @@ const SpideyProfile: React.FC = () => {
   }, []);
 
   if (!spidey) {
+    // Enuqnato não tiver informações vai renderizar o Loader
     return <Loader />;
   }
 

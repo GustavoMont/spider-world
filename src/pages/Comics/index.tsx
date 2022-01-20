@@ -4,11 +4,11 @@ import { Outlet } from "react-router-dom";
 
 const ComicsPage = () => {
   useEffect(() => {
-    Aos.init({});
+    Aos.init({}); // Aciona a lib do aos
   }, []);
   return (
     <div className="pt-[15vh]">
-      <Outlet />
+      <Outlet /> {/*Vai renderizar a página all comics ou a OneCOmic */}
     </div>
   );
 };

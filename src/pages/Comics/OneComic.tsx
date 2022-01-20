@@ -6,16 +6,16 @@ import { SpideyContext } from "../../Context/SpideyContentCtx";
 import { useParams } from "react-router-dom";
 
 const OneComic = () => {
-  const { state, comics } = useContext(SpideyContext);
-  const { id } = useParams();
+  const { state, comics } = useContext(SpideyContext); //O estado contêm informação de um quadrinho específico
+  const { id } = useParams(); // Esse é o id da página que é o mesmo do quadrinho que vai ser mostrado
 
   const info =
-    state.id === 1
+    state.id === 1 // Se for o estado inicial é necessário filtrar os quadrinhos usando o id passado na pgina
       ? comics?.filter((item) => item.id === Number(id))[0]
-      : state;
+      : state; // Se não for é só usar o mesmo estado
 
   if (!info) {
-    return <Loader />;
+    return <Loader />; // Enquanto não tiver a informação Renderiza o Loader
   }
 
   return (

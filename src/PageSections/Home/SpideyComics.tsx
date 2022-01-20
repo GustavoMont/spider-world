@@ -15,9 +15,11 @@ interface ComicsComponent {
 }
 
 const Comics = ({ height }: ComicsComponent) => {
+  // Altura máxima da seção
   const { comics, dispatch } = useContext(SpideyContext);
   const navegate = useNavigate();
   if (!comics || comics.length === 0) {
+    // Enquanto não tiver quadrinhos renderia o Loader
     return <Loader />;
   }
   return (
@@ -48,7 +50,7 @@ const Comics = ({ height }: ComicsComponent) => {
               <div
                 className={`comic rounded-md w-full h-[60vh] md:h-[18rem] lg:h-[23rem] lg border-4 ease-in duration-300 border-dark-red dark:border-white max-w-[800px] cursor-pointer hover:scale-125`}
                 onClick={() => {
-                  dispatch({ type: "ALL_INFO", info: item });
+                  dispatch({ type: "ALL_INFO", info: item }); // Passa as informações do quadrinho pro estado
                   navegate(`/comics/${item.id}`);
                 }}
               >

@@ -5,8 +5,8 @@ import Post from "../Components/Post";
 import { PostContext } from "../Context/PostContext";
 
 const Feed = () => {
-  const [openModal, setOpenModal] = useState(false);
-  const { posts } = useContext(PostContext);
+  const [openModal, setOpenModal] = useState(false); // Administrar o formulário dos posts
+  const { posts } = useContext(PostContext); // Posts que estão salvos na base de dados
   return (
     <div className="pt-[15vh] gap-x-2 md:grid md:grid-cols-10 lg:grid-cols-12 grid-rows-[50px_1fr] lg:gap-x-7 lg:justify-items-center px-1 lg:px-8 min-h-screen">
       <h2
