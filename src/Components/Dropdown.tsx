@@ -12,7 +12,7 @@ interface DropdownComp {
 function Dropdown({ infos, title, closeMenu }: DropdownComp) {
   const { dispatch } = useContext(SpideyContext);
   return (
-    <div className="p-10">
+    <div>
       <div className="dropdown inline-block relative">
         <button className="bg-white dark:bg-gray text-red dark:text-white font-semibold py-2 px-4 rounded inline-flex items-center">
           <span className="mr-1">{title}</span>
