@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import AuthContext from "../Context/AuthContext";
 import { SpideyContext } from "../Context/SpideyContentCtx";
 import Dropdown from "./Dropdown";
 import Switch from "./Switch";
@@ -7,9 +8,10 @@ import Switch from "./Switch";
 const Menu: React.FC = () => {
   const [open, setOpen] = useState<Boolean>(false);
   const [bg, setBg] = useState<Boolean>(false);
-  const navegate = useNavigate();
+  const navigate = useNavigate();
   const optionClasses = `dark:bg-black-100 w-screen h-[85vh] bg-red`;
   const { comics } = useContext(SpideyContext);
+  const { isAuth } = useContext(AuthContext);
   window.onscroll = () => {
     setBg(true);
     const firtsBarrier = document.querySelectorAll("[data-barrier]")[0];
@@ -35,7 +37,7 @@ const Menu: React.FC = () => {
         {window.location.pathname !== "/" && (
           <i
             className="fas fa-arrow-left text-white cursor-pointer mr-3 hover:scale-125 hover:text-white-80 ease-in duration-100"
-            onClick={() => navegate(-1)}
+            onClick={() => navigate(-1)}
           ></i>
         )}
         <Link to={"/"}>Spider-World</Link>
@@ -56,7 +58,7 @@ const Menu: React.FC = () => {
       <div
         className={`menu-options overflow-y-auto absolute lg:overflow-y-visible left-0 ease-in flex dark:bg-black-100 w-screen 
         h-[85vh] md:h-[90vh] bg-red lg:w-3/6 items-center duration-500 ${optionClasses} ${
-          open ? "top-[15vh]" : "top-[100vh]"
+          open ? "top-[15vh] md:top-[10vh] " : "top-[100vh]"
         } lg:static lg:h-[100%] lg:bg-transparent lg:dark:bg-transparent`}
       >
         <ul
@@ -68,15 +70,42 @@ const Menu: React.FC = () => {
           <li>
             <Dropdown infos={comics} title="Comics" closeMenu={setOpen} />
           </li>
-          <li>
-            <Link
-              onClick={() => setOpen(false)}
-              to={"/join"}
-              className="bg-white hover:bg-dark-red dark:bg-gray dark:hover:bg-white ease-in duration-300 dark:text-white text-dark-red hover:text-white dark:hover:text-gray w-40 py-3 text-center font-bold rounded-md block lg:w-28"
-            >
-              Join to Us
-            </Link>
-          </li>
+          {!isAuth() ? (
+            <li>
+              <Link
+                onClick={() => setOpen(false)}
+                to={"/join"}
+                className="bg-white hover:bg-dark-red dark:bg-gray dark:hover:bg-white ease-in duration-300 dark:text-white text-dark-red hover:text-white dark:hover:text-gray w-40 py-3 text-center font-bold rounded-md block lg:w-28"
+              >
+                Join to Us
+              </Link>
+            </li>
+          ) : (
+            <>
+              <li>
+                <Link
+                  onClick={() => setOpen(false)}
+                  to={window.location.pathname === "/" ? "/community" : "/"}
+                  className="ease-in duration-300 text-white font-bold rounded-md block"
+                >
+                  {window.location.pathname === "/" ? "Community" : "Home"}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  onClick={() => {
+                    localStorage.removeItem("@spider-world-login");
+                    navigate("/");
+                    setOpen(false);
+                  }}
+                  to={"/join"}
+                  className="ease-in duration-300 text-white font-bold rounded-md block"
+                >
+                  Sign out
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </nav>
