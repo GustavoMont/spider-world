@@ -2,21 +2,22 @@ import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
 import { PostContext } from "../Context/PostContext";
 import { SpideyContext } from "../Context/SpideyContentCtx";
-import PostType from "../Types/PostType";
+import PostType from "../Types/PostType"; // Tipo criado pra o contexto dos posts mas que auxilia no desenvolvimento
 
 const FormPost = () => {
-  const { comics } = useContext(SpideyContext);
-  const { name } = useContext(AuthContext);
-  const { posts, setPosts } = useContext(PostContext);
-  const [comic, setComic] = useState("");
-  const [text, setText] = useState("");
-  const [anonimous, setAnonimous] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
+  const { comics } = useContext(SpideyContext); // Pegando todos os quadrinhos
+  const { name } = useContext(AuthContext); // Pegando o nome salvo no contetxo de Authenticação
+  const { posts, setPosts } = useContext(PostContext); // Pegando os posts salvos no contexto de Posts
+  const [comic, setComic] = useState(""); // Lidar com campo dos quadrinhos
+  const [text, setText] = useState(""); // Lidando com o texto do post
+  const [anonimous, setAnonimous] = useState(false); // Lidando com o checkbox
+  const [errorMsg, setErrorMsg] = useState(""); // Similar ao FormLogin
   useEffect(() => {
     if (posts.length !== 0) {
+      // Prevenindo do array vazio inicial sobrescrever os que estão salvos no local storage
       localStorage.setItem("@spider-world-posts", JSON.stringify(posts));
     }
-  }, [posts]);
+  }, [posts]); // toda vez que os Posts forem atualizados ele vai salvar no localstorage
   return (
     <div>
       <form
@@ -33,11 +34,12 @@ const FormPost = () => {
           }
 
           const post: PostType = {
-            name: anonimous ? undefined : name,
+            name: anonimous ? undefined : name, // Se for um anônimo o nome fica indefinido
             comic,
             text,
           };
           if (setPosts) {
+            // Tendo certeza de que a função não está nula
             setPosts([...posts, post]);
           }
           setComic("");

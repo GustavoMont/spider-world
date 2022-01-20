@@ -4,13 +4,13 @@ import { SpideyContext } from "../Context/SpideyContentCtx";
 import { SpideyContent } from "../Types/SpideyContent";
 
 interface DropdownComp {
-  infos: SpideyContent[] | null;
-  title: string;
-  closeMenu: React.Dispatch<React.SetStateAction<Boolean>>;
+  infos: SpideyContent[] | null; // O dropdown precisa receber informação sobre os quadrinhos
+  title: string; // O titulo do dropdown
+  closeMenu: React.Dispatch<React.SetStateAction<Boolean>>; // Quando eu clicar em uma opção quero que o menu feche
 }
 
 function Dropdown({ infos, title, closeMenu }: DropdownComp) {
-  const { dispatch } = useContext(SpideyContext);
+  const { dispatch } = useContext(SpideyContext); // Para repassar todas as informações para a página /comics/:id
   return (
     <div>
       <div className="dropdown inline-block relative">
@@ -27,7 +27,7 @@ function Dropdown({ infos, title, closeMenu }: DropdownComp) {
         <ul className="dropdown-menu absolute z-50 hidden text-red pt-1">
           {infos?.map((info, index) => {
             if (index >= 7) {
-              return null;
+              return null; // Limite máximo para não quebrar o layout
             }
             return (
               <li className="" key={info.id}>

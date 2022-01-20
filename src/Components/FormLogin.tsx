@@ -2,30 +2,30 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function FormLogin() {
-  const [email, setEmail] = useState<string>("");
-  const [pass, setPass] = useState<string>("");
-  const [errorMsg, setErrorMsg] = useState<string>("");
+  const [email, setEmail] = useState<string>(""); // Para lidar com campo de email
+  const [pass, setPass] = useState<string>(""); // Para lidar com campo de senha
+  const [errorMsg, setErrorMsg] = useState<string>(""); // Todo erro de submição gerá uma mensagem que vai aparecer acima do butão
   const navigate = useNavigate();
   return (
     <form
       className="flex flex-col text-white "
       onSubmit={(e) => {
         e.preventDefault();
-        const database = localStorage.getItem("@spider-world-users") || "";
-        const users = database && JSON.parse(database);
+        const database = localStorage.getItem("@spider-world-users") || ""; // Base de dados salva no localstorage
+        const users = database && JSON.parse(database); // Apenas se houver base de dados eu vou convertê-la
         const user: { name: string; pass: string; email: string } =
           users &&
           users.reduce(
             (last: boolean, user: { email: string; name: string }) =>
               user.email === email ? user : last,
             false
-          );
+          ); // Procurar o e-mail na base de dados caso não ache vai gerar uma erro
 
         if (!user) {
           setErrorMsg("User not registered!!");
           return;
         }
-        const canAuth = user?.pass === pass;
+        const canAuth = user?.pass === pass; // Checando se a senha digitada coincide com a senha salva
         if (!canAuth) {
           setErrorMsg("E-mail or password is incorrect!!");
           return;
@@ -34,12 +34,13 @@ function FormLogin() {
           name: user.name,
           email,
           isLogged: true,
-        });
+        }); // Gerando um JSON de login e salvando ele no localstorage
         localStorage.setItem("@spider-world-login", jsonUser);
+        //Limpando o formulário
         setErrorMsg("");
         setEmail("");
         setPass("");
-        navigate("/community");
+        navigate("/community"); // indo pra pagina community
       }}
     >
       <label htmlFor="email">E-mail: </label>

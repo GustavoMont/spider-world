@@ -1,5 +1,6 @@
 import React from "react";
-
+// Componente renderizado apenas em algumas páginas que podem demorar a puxar informações
+// seu estilo está no arquivo index.css fora os que estão no tailwind
 function Loader() {
   return (
     <div className="py-10">

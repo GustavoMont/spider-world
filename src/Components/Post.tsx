@@ -1,12 +1,13 @@
 import React from "react";
-
+// Tipagem do component Post
 interface PostType {
-  name?: string;
+  name?: string; // Pode ser que o usuário postou anonimamente
   comic: string;
   content: string;
 }
 
 const Post = ({ name, comic, content }: PostType) => {
+  // Informações que vem da página feed
   return (
     <div className="post bg-blue dark:bg-black-100 p-2 md:p-5 lg:w-[90%] md:w-full rounded-md text-white mx-auto mb-2 ease-in duration-300">
       <div className="post-header flex items-center py-2">
@@ -18,6 +19,7 @@ const Post = ({ name, comic, content }: PostType) => {
           }}
         >
           <div className="fade w-full h-full bg-black-80 flex items-center justify-center">
+            {/* Se o usuário for anônimo o text será "Someone" ao invés do nome do usuário e a foto terá um ponto de interrogação  */}
             <span className="text-[2rem] font-[700]">{name?.[0] || "?"}</span>
           </div>
         </div>

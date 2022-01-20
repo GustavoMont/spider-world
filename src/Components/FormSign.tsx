@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const FormSign = () => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState(""); // Semelhante ao formlogin.
   const [date, setDate] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
@@ -14,14 +14,14 @@ const FormSign = () => {
       className="flex flex-col"
       onSubmit={(e) => {
         e.preventDefault();
-        const database = localStorage.getItem("@spider-world-users") || "";
-        const users: [{ email: string }] = database && JSON.parse(database);
+        const database = localStorage.getItem("@spider-world-users") || ""; // Semelhante ao form login
+        const users: [{ email: string }] = database && JSON.parse(database); // Semelhante ao form login
         const isRegistered =
           users &&
           users.reduce(
             (last, user: { email: string }) => user.email === email,
             false
-          );
+          ); // Verificando se esse usuário já está cadastrado.
         if (isRegistered) {
           setErrorMsg("User already registered!");
           return;
@@ -32,19 +32,23 @@ const FormSign = () => {
           return;
         }
         setErrorMsg("");
+        // Salvando o novo usuário na "Base de Dados"
         localStorage.setItem(
           "@spider-world-users",
           JSON.stringify([...users, { name, email, date, pass }])
         );
+        // Setando o que seria o token de login
         localStorage.setItem(
           "@spider-world-login",
           JSON.stringify({ name, email, isLogged: true })
         );
+        // Limoando o formulário
         setName("");
         setDate("");
         setPass("");
         setEmail("");
         setConfirm("");
+        // Ir para community
         navigate("/community");
       }}
     >

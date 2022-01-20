@@ -6,17 +6,18 @@ import Dropdown from "./Dropdown";
 import Switch from "./Switch";
 
 const Menu: React.FC = () => {
-  const [open, setOpen] = useState<Boolean>(false);
-  const [bg, setBg] = useState<Boolean>(false);
+  const [open, setOpen] = useState<Boolean>(false); //  Lidar com estado do menu
+  const [bg, setBg] = useState<Boolean>(false); // lidar com estado do background
   const navigate = useNavigate();
-  const optionClasses = `dark:bg-black-100 w-screen h-[85vh] bg-red`;
-  const { comics } = useContext(SpideyContext);
-  const { isAuth } = useContext(AuthContext);
+  const optionClasses = `dark:bg-black-100 w-screen h-[85vh] bg-red`; // Diminuindo a quantidade de classes nas opções do menu
+  const { comics } = useContext(SpideyContext); // Puxando os quadrinhos do contexto dos quadrinhos
+  const { isAuth } = useContext(AuthContext); // Verificando se o usuário está logado ou não
   window.onscroll = () => {
     setBg(true);
     const firtsBarrier = document.querySelectorAll("[data-barrier]")[0];
     const barrierPos = firtsBarrier.getBoundingClientRect().top;
-
+    /*Sempre q o primeiro elemento com o atribuuto [data-barrier] chegar numa 
+    altura de 60 px do to o background vai ganhar sua cor*/
     if (barrierPos < 60) {
       setBg(true);
     } else {
@@ -70,6 +71,7 @@ const Menu: React.FC = () => {
           <li>
             <Dropdown infos={comics} title="Comics" closeMenu={setOpen} />
           </li>
+          {/* Quando o usuário está logado são outras opções que aparecem no menu */}
           {!isAuth() ? (
             <li>
               <Link
