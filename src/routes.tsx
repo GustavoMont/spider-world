@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Menu from "./Components/Menu";
 import AuthContext from "./Context/AuthContext";
+import { PostProvider } from "./Context/PostContext";
 import { SpideyProvider } from "./Context/SpideyContentCtx";
 import Page404 from "./pages/404";
 import ComicsPage from "./pages/Comics";
@@ -35,7 +36,9 @@ const AppRoutes: React.FC = () => {
           path="/community"
           element={
             <Private>
-              <Feed />
+              <PostProvider>
+                <Feed />
+              </PostProvider>
             </Private>
           }
         />
