@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AuthContext from "../Context/AuthContext";
 import { SpideyContext } from "../Context/SpideyContentCtx";
 import Dropdown from "./Dropdown";
 import Switch from "./Switch";
@@ -9,9 +8,8 @@ const Menu: React.FC = () => {
   const [open, setOpen] = useState<Boolean>(false); //  Lidar com estado do menu
   const [bg, setBg] = useState<Boolean>(false); // lidar com estado do background
   const navigate = useNavigate();
-  const optionClasses = `dark:bg-black-100 w-screen h-[85vh] bg-red`; // Diminuindo a quantidade de classes nas opções do menu
-  const { comics } = useContext(SpideyContext); // Puxando os quadrinhos do contexto dos quadrinhos
-  const { isAuth } = useContext(AuthContext); // Verificando se o usuário está logado ou não
+  const optionClasses = `dark:bg-black-100 w-screen h-[85vh] bg-red`;
+  const { comics } = useContext(SpideyContext);
   window.onscroll = () => {
     setBg(true);
     const firtsBarrier = document.querySelectorAll("[data-barrier]")[0];
@@ -71,8 +69,7 @@ const Menu: React.FC = () => {
           <li>
             <Dropdown infos={comics} title="Comics" closeMenu={setOpen} />
           </li>
-          {/* Quando o usuário está logado são outras opções que aparecem no menu */}
-          {!isAuth() ? (
+          {/* {!isAuth() ? (
             <li>
               <Link
                 onClick={() => setOpen(false)}
@@ -107,7 +104,7 @@ const Menu: React.FC = () => {
                 </Link>
               </li>
             </>
-          )}
+          )} */}
         </ul>
       </div>
     </nav>
