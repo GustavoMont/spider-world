@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AuthContext from "../Context/AuthContext";
 import { SpideyContext } from "../Context/SpideyContentCtx";
 import Dropdown from "./Dropdown";
 import Switch from "./Switch";
@@ -11,7 +10,6 @@ const Menu: React.FC = () => {
   const navigate = useNavigate();
   const optionClasses = `dark:bg-black-100 w-screen h-[85vh] bg-red`;
   const { comics } = useContext(SpideyContext);
-  const { isAuth } = useContext(AuthContext);
   window.onscroll = () => {
     setBg(true);
     const firtsBarrier = document.querySelectorAll("[data-barrier]")[0];
@@ -70,7 +68,7 @@ const Menu: React.FC = () => {
           <li>
             <Dropdown infos={comics} title="Comics" closeMenu={setOpen} />
           </li>
-          {!isAuth() ? (
+          {/* {!isAuth() ? (
             <li>
               <Link
                 onClick={() => setOpen(false)}
@@ -105,7 +103,7 @@ const Menu: React.FC = () => {
                 </Link>
               </li>
             </>
-          )}
+          )} */}
         </ul>
       </div>
     </nav>
